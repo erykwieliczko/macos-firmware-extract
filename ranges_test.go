@@ -24,7 +24,7 @@ import (
 func digest(data []byte) string { sum := sha256.Sum256(data); return hex.EncodeToString(sum[:]) }
 func productionRecipe(t *testing.T) *rangeRecipe {
 	t.Helper()
-	data, err := os.ReadFile("../profiles/j700-25G83-ranges.json")
+	data, err := os.ReadFile("testdata/j700-25G83-ranges.json")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -59,7 +59,7 @@ func TestRangeRecipeAdmission(t *testing.T) {
 			}
 		})
 	}
-	data, _ := os.ReadFile("../profiles/j700-25G83-ranges.json")
+	data, _ := os.ReadFile("testdata/j700-25G83-ranges.json")
 	p := filepath.Join(t.TempDir(), "recipe.json")
 	os.WriteFile(p, data, 0600)
 	if _, err := readRecipe(p, digest(data)); err != nil {

@@ -282,28 +282,7 @@ func verifyStage1(input, expectedDigest, expectedSize string) error {
 
 func main() {
 	if len(os.Args) == 2 && os.Args[1] == "capabilities" {
-		fmt.Println("restore-image firmware-ranges verify-stage1 aurora-tar verify-catalog catalog-details")
-		return
-	}
-	if (len(os.Args) == 7 || len(os.Args) == 8) && os.Args[1] == "catalog-details" {
-		if err := catalogDetailsFile(os.Args[2], os.Args[3], os.Args[4], os.Args[5], os.Args[6], os.Args[7:]...); err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			os.Exit(1)
-		}
-		return
-	}
-	if len(os.Args) == 4 && os.Args[1] == "verify-catalog" {
-		if err := verifyCatalogFile(os.Args[2], os.Args[3]); err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			os.Exit(1)
-		}
-		return
-	}
-	if len(os.Args) == 3 && os.Args[1] == "aurora-tar" {
-		if err := decodeAuroraFile(os.Args[2]); err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			os.Exit(1)
-		}
+		fmt.Println("restore-image firmware-ranges verify-stage1")
 		return
 	}
 	if len(os.Args) == 5 && os.Args[1] == "firmware-ranges" {
